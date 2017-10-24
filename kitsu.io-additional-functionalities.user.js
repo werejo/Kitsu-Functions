@@ -73,7 +73,11 @@
 			$(".sidebar-item.sidebar-footer").on("click", ".hide-before-pinned", function(){
                 var post_id=localStorage.pinned_post;
 				$(".feed-stream > .ember-view > .occludable-area").each(function(){
-					if($(this).attr("id") < post_id)){$(this).addClass("before-pinned-hide");}
+					if($(this).attr("id") < post_id){$(this).addClass("before-pinned-hide");}
+                    $('html, body').animate({
+                        scrollTop: $("#"+post_id).offset().top - $(".feed-actions").height() + 10
+                    }, 200);
+					
 				});
 			});
             console.log("werejo's additional functions created!");
