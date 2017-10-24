@@ -39,6 +39,7 @@
                 "<button class='view-less-toggle'>View Less</button>"+
                 "<button class='create-pins'>Create Pins</button>"+
                 "<button class='to-pinned' data-pinned>To Pinned</button>"+
+                "<button class='hide-before-pinned' data-pinned>Hide Before Pinned</button>"+
                 "</div>"
             );
             $(".sidebar-item.sidebar-footer").on("click", ".nsfw-toggle", function(){
@@ -63,13 +64,18 @@
             });
             $(".sidebar-item.sidebar-footer").on("click", ".to-pinned", function(){
                 var post_id=localStorage.pinned_post;
-                console.log($("#"+post_id).length);
                 if($("#"+post_id).length){
                     $('html, body').animate({
                         scrollTop: $("#"+post_id).offset().top - $("#kitsu-navbar").height() - 10
                     }, 200);
                 }
             });
+			$(".sidebar-item.sidebar-footer").on("click", ".hide-before-pinned", function(){
+                var post_id=localStorage.pinned_post;
+				$(".feed-stream > .ember-view > .occludable-area").each(function(){
+					if($(this).attr("id") < ("ember"+post_id)){$(this).css("display", "none");}
+				});
+			});
             console.log("werejo's additional functions created!");
         }
         $("head").append("<style type='text/css'>.occludable-area.has-pin{position:relative;}.pin-button-wrap{position:absolute;top:0;right:0;z-index:100;}</style>");

@@ -16,7 +16,8 @@ I realized that having a constantly shifting view-space due to all the expanding
 
 <strong>Create Pins Button </strong>: Creates a "Pin This Post" button that appears on the top right corner of all visible posts.<br/>
 <strong>To Pinned Button </strong>: Scrolls page to the 'anchor' post.<br/>
-<strong>Pin This Post Button </strong>: Assigns this post as the 'anchor' post. <br/>
+<strong>Hide Before Pinned Button </strong>: Hides all posts before 'anchor' post. (Great for them laggy-scroll situations)<br/>
+<strong>Pin This Post Button </strong>: Assigns this post as the 'anchor' post. <br
 
 -----------------------------------------
 
