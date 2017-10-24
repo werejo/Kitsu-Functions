@@ -4,9 +4,9 @@
 // @version      	1.0
 // @description  	Some additional functions I felt I needed for my (¬‿¬ ) Kitsu experience
 // @author       	werejo
-// @homepage      	https://github.com/misarasglow/kitsu-dark
-// @updateURL     	https://github.com/misarasglow/kitsu-dark/raw/master/kitsu.io-dark-theme.user.js
-// @downloadURL   	https://github.com/misarasglow/kitsu-dark/raw/master/kitsu.io-dark-theme.user.js
+// @homepage      	https://github.com/werejo/Kitsu-Functions
+// @updateURL     	https://github.com/werejo/Kitsu-Functions/blob/master/kitsu.io-additional-functionalities.user.js
+// @downloadURL   	https://github.com/werejo/Kitsu-Functions/blob/master/kitsu.io-additional-functionalities.user.js
 // @match        	https://kitsu.io/*
 // @grant        	none
 // @run-at	     	document-end
