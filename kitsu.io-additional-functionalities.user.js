@@ -70,16 +70,18 @@
                     }, 200);
                 }
             });
-			$(".sidebar-item.sidebar-footer").on("click", ".hide-before-pinned", function(){
+            $(".sidebar-item.sidebar-footer").on("click", ".hide-before-pinned", function(){
                 var post_id=localStorage.pinned_post;
 				$(".feed-stream > .ember-view > .occludable-area").each(function(){
 					if($(this).attr("id") < post_id){$(this).addClass("before-pinned-hide");}
+				});
+				
+                if($("#"+post_id).length){
                     $('html, body').animate({
                         scrollTop: $("#"+post_id).offset().top - $(".feed-actions").height() + 10
                     }, 200);
-					
-				});
-			});
+                }
+            });
             console.log("werejo's additional functions created!");
         }
         $("head").append("<style type='text/css'>"+
