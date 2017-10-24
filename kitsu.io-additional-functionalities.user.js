@@ -72,22 +72,23 @@
             });
             $(".sidebar-item.sidebar-footer").on("click", ".hide-before-pinned", function(){
                 var post_id=localStorage.pinned_post;
-				$(".feed-stream > .ember-view > .occludable-area").each(function(){
-					if($(this).attr("id") < post_id){$(this).addClass("before-pinned-hide");}
-				});
-				
+                $(".feed-stream > .ember-view > .occludable-area").each(function(){
+                    if($(this).attr("id") < post_id){$(this).addClass("before-pinned-hide");}
+                });
                 if($("#"+post_id).length){
                     $('html, body').animate({
-                        scrollTop: $("#"+post_id).offset().top - $(".feed-actions").height() + 10
+                        scrollTop: $(".feed-actions").offset().top - $("#kitsu-navbar").height() - 10 + $(".feed-actions").height() + 15
                     }, 200);
                 }
             });
             console.log("werejo's additional functions created!");
         }
-        $("head").append("<style type='text/css'>"+
-		".occludable-area.has-pin{position:relative;}"+
-		".pin-button-wrap{position:absolute;top:0;right:0;z-index:100;}"+
-		".occludable-area.before-pinned-hide{display:none;}"+
-		"</style>");
+        $("head").append(
+            "<style type='text/css'>"+
+            ".occludable-area.has-pin{position:relative;}"+
+            ".pin-button-wrap{position:absolute;top:0;right:0;z-index:100;}"+
+            ".occludable-area.before-pinned-hide{display:none;}"+
+            "</style>"
+        );
     });
 })();
