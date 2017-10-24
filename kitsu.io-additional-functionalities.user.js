@@ -73,11 +73,15 @@
 			$(".sidebar-item.sidebar-footer").on("click", ".hide-before-pinned", function(){
                 var post_id=localStorage.pinned_post;
 				$(".feed-stream > .ember-view > .occludable-area").each(function(){
-					if($(this).attr("id") < ("ember"+post_id)){$(this).css("display", "none");}
+					if($(this).attr("id") < ("ember"+post_id)){$(this).addClass("before-pinned-hide");}
 				});
 			});
             console.log("werejo's additional functions created!");
         }
-        $("head").append("<style type='text/css'>.occludable-area.has-pin{position:relative;}.pin-button-wrap{position:absolute;top:0;right:0;z-index:100;}</style>");
+        $("head").append("<style type='text/css'>"+
+		".occludable-area.has-pin{position:relative;}"+
+		".pin-button-wrap{position:absolute;top:0;right:0;z-index:100;}"+
+		".occludable-area.before-pinned-hide{display:none;}"+
+		"</style>");
     });
 })();
