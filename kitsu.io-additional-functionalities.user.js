@@ -5,8 +5,8 @@
 // @description  	Some additional functions I felt I needed for my (¬‿¬ ) Kitsu experience
 // @author       	werejo
 // @homepage      	https://github.com/werejo/Kitsu-Functions
-// @updateURL     	https://github.com/werejo/Kitsu-Functions/blob/master/kitsu.io-additional-functionalities.user.js
-// @downloadURL   	https://github.com/werejo/Kitsu-Functions/blob/master/kitsu.io-additional-functionalities.user.js
+// @updateURL     	https://github.com/werejo/Kitsu-Functions/raw/master/kitsu.io-additional-functionalities.user.js
+// @downloadURL   	https://github.com/werejo/Kitsu-Functions/raw/master/kitsu.io-additional-functionalities.user.js
 // @match        	https://kitsu.io/*
 // @grant        	none
 // @run-at	     	document-end
