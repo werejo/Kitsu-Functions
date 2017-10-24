@@ -73,8 +73,7 @@
 			$(".sidebar-item.sidebar-footer").on("click", ".hide-before-pinned", function(){
                 var post_id=localStorage.pinned_post;
 				$(".feed-stream > .ember-view > .occludable-area").each(function(){
-					var id_string = "ember"+post_id;
-					if($(this).attr("id") < id_string)){$(this).addClass("before-pinned-hide");}
+					if($(this).attr("id") < post_id)){$(this).addClass("before-pinned-hide");}
 				});
 			});
             console.log("werejo's additional functions created!");
