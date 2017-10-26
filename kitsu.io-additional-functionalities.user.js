@@ -34,21 +34,37 @@
         function createButtons(){
             $(".sidebar-item.sidebar-footer").append(
                 "<div class='werejo-buttons-wrap'>"+
-                "<button class='nsfw-toggle'>(¬‿¬ )</button>"+
-                "<button class='view-more-toggle'>View More</button>"+
-                "<button class='view-less-toggle'>View Less</button>"+
+                "<button class='nsfw-ungate'>Ungate NSFW</button>"+
+                "<button class='nsfw-toggle' data-state='nsfw'>(ಠ_ಠ) mode</button>"+"<br/>"+
+                "<button class='view-more-button'>View More</button>"+
+                "<button class='view-less-button'>View Less</button>"+"<br/>"+
                 "<button class='create-pins'>Create Pins</button>"+
-                "<button class='to-pinned' data-pinned>To Pinned</button>"+
-                "<button class='hide-before-pinned' data-pinned>Hide Before Pinned</button>"+
+                "<button class='to-pinned' data-pinned>To Pinned</button>"+"<br/>"+
+                "<button class='hide-before-pinned'>Hide Before Pinned</button>"+"<br/>"+
+                "<button class='to-pinned-previous'><< Prev</button>"+
+                "<button class='to-pinned-next'>Next >></button>"+
                 "</div>"
             );
-            $(".sidebar-item.sidebar-footer").on("click", ".nsfw-toggle", function(){
+            $(".feed-stream").on("click", ".nsfw-gate a", function(){
+                    $(this).parents(".occludable-area").addClass("is-nsfw");
+            });
+            $(".sidebar-item.sidebar-footer").on("click", ".nsfw-ungate", function(){
                 $(".nsfw-gate .gate--hover").click();
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".view-more-toggle", function(){
+            $(".sidebar-item.sidebar-footer").on("click", ".nsfw-toggle", function(){
+                var state = $(this).data("state");
+                if(state == "sfw"){
+                    $(".is-nsfw").removeClass("filter-on");
+                    $(this).data("state", "nsfw").html("(ಠ_ಠ) mode");
+                }else if(state == "nsfw"){
+                    $(".is-nsfw").addClass("filter-on");
+                    $(this).data("state", "sfw").html("(¬‿¬ ) mode");
+                }
+            });
+            $(".sidebar-item.sidebar-footer").on("click", ".view-more-button", function(){
                 $(".stream-content-post:not(.full-post) + .view-more a").click();
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".view-less-toggle", function(){
+            $(".sidebar-item.sidebar-footer").on("click", ".view-less-button", function(){
                 $(".stream-content-post.full-post + .view-more a").click();
             });
             $(".sidebar-item.sidebar-footer").on("click", ".create-pins", function(){
@@ -81,6 +97,26 @@
                     }, 200);
                 }
             });
+            $(".sidebar-item.sidebar-footer").on("click", ".to-pinned-previous", function(){
+                var post_id=localStorage.pinned_post;
+                var prev=$("#"+post_id).prev();
+                if(prev.length){
+                    $('html, body').animate({
+                        scrollTop: prev.offset().top - $("#kitsu-navbar").height() - 10
+                    }, 200);
+                }
+                localStorage.pinned_post = prev.attr("id");
+            });
+            $(".sidebar-item.sidebar-footer").on("click", ".to-pinned-next", function(){
+                var post_id=localStorage.pinned_post;
+                var next=$("#"+post_id).next();
+                if(next.length){
+                    $('html, body').animate({
+                        scrollTop: next.offset().top - $("#kitsu-navbar").height() - 10
+                    }, 200);
+                }
+                localStorage.pinned_post = next.attr("id");
+            });
             console.log("werejo's additional functions created!");
         }
         $("head").append(
@@ -88,6 +124,7 @@
             ".occludable-area.has-pin{position:relative;}"+
             ".pin-button-wrap{position:absolute;top:0;right:0;z-index:100;}"+
             ".occludable-area.before-pinned-hide{display:none;}"+
+            ".occludable-area.is-nsfw.filter-on .stream-content-post{-webkit-filter: blur(50px);filter: blur(50px);}"+
             "</style>"
         );
     });
