@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         	werejo's additional Kitsu functions
 // @namespace    	http://plug.dj/hummingbird-me
-// @version      	1.1.1
+// @version      	1.1.2
 // @description  	Some additional functions I felt I needed for my (¬‿¬ ) Kitsu experience
 // @author       	werejo
 // @homepage      	https://github.com/werejo/Kitsu-Functions
@@ -54,10 +54,10 @@
             $(".feed-sidebar").on("click", ".nsfw-toggle", function(){
                 var state = $(this).data("state");
                 if(state == "sfw"){
-                    $(".is-nsfw").removeClass("filter-on");
+                    $(".feed-stream").removeClass("filter-on");
                     $(this).data("state", "nsfw").html("(ಠ_ಠ) mode");
                 }else if(state == "nsfw"){
-                    $(".is-nsfw").addClass("filter-on");
+                    $(".feed-stream").addClass("filter-on");
                     $(this).data("state", "sfw").html("(¬‿¬ ) mode");
                 }
             });
@@ -128,7 +128,7 @@
             ".occludable-area.has-pin{position:relative;}"+
             ".pin-button-wrap{position:absolute;top:0;right:0;z-index:100;}"+
             ".occludable-area.before-pinned-hide{display:none;}"+
-            ".occludable-area.is-nsfw.filter-on .stream-content-post{-webkit-filter: blur(50px);filter: blur(50px);}"+
+            ".filter-on .occludable-area.is-nsfw .stream-content-post{-webkit-filter: blur(50px);filter: blur(50px);}"+
             ".werejo-buttons-wrap.is-sticky{top:160px;}"+
             "</style>"
         );
