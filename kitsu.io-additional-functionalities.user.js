@@ -105,7 +105,9 @@
                         scrollTop: prev.offset().top - $("#kitsu-navbar").height() - 10
                     }, 200);
                 }
-                localStorage.pinned_post = prev.attr("id");
+				post_id = prev.attr("id");
+                $(".to-pinned").html("To #"+post_id);
+                localStorage.pinned_post = post_id;
             });
             $(".sidebar-item.sidebar-footer").on("click", ".to-pinned-next", function(){
                 var post_id=localStorage.pinned_post;
@@ -115,7 +117,9 @@
                         scrollTop: next.offset().top - $("#kitsu-navbar").height() - 10
                     }, 200);
                 }
-                localStorage.pinned_post = next.attr("id");
+				post_id = next.attr("id");
+                $(".to-pinned").html("To #"+post_id);
+                localStorage.pinned_post = post_id;
             });
             console.log("werejo's additional functions created!");
         }
