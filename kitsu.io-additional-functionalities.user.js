@@ -16,7 +16,7 @@
     'use strict';
     $(document).ready(function(){
         var existCondition = setInterval(function() {
-            if ($(".sidebar-item.sidebar-footer").length) {
+            if ($(".feed-sidebar").length) {
                 clearInterval(existCondition);
                 createButtons();
             }
@@ -32,8 +32,8 @@
             }
         });
         function createButtons(){
-            $(".sidebar-item.sidebar-footer").append(
-                "<div class='werejo-buttons-wrap'>"+
+            $(".feed-sidebar").append(
+                "<div class='werejo-buttons-wrap is-sticky'>"+
                 "<button class='nsfw-ungate'>Ungate NSFW</button>"+
                 "<button class='nsfw-toggle' data-state='nsfw'>(ಠ_ಠ) mode</button>"+"<br/>"+
                 "<button class='view-more-button'>View More</button>"+
@@ -48,10 +48,10 @@
             $(".feed-stream").on("click", ".nsfw-gate a", function(){
                     $(this).parents(".occludable-area").addClass("is-nsfw");
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".nsfw-ungate", function(){
+            $(".feed-sidebar").on("click", ".nsfw-ungate", function(){
                 $(".nsfw-gate .gate--hover").click();
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".nsfw-toggle", function(){
+            $(".feed-sidebar").on("click", ".nsfw-toggle", function(){
                 var state = $(this).data("state");
                 if(state == "sfw"){
                     $(".is-nsfw").removeClass("filter-on");
@@ -61,13 +61,13 @@
                     $(this).data("state", "sfw").html("(¬‿¬ ) mode");
                 }
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".view-more-button", function(){
+            $(".feed-sidebar").on("click", ".view-more-button", function(){
                 $(".stream-content-post:not(.full-post) + .view-more a").click();
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".view-less-button", function(){
+            $(".feed-sidebar").on("click", ".view-less-button", function(){
                 $(".stream-content-post.full-post + .view-more a").click();
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".create-pins", function(){
+            $(".feed-sidebar").on("click", ".create-pins", function(){
                 $(".feed-stream > .ember-view > .occludable-area:not(.has-pin)").each(function(){
                     var post_id=$(this).attr("id");
                     $(this).addClass("has-pin").append("<div class='pin-button-wrap'><button data-post_id='"+post_id+"' class='pin-button'>Pin This Post</button></div>");
@@ -78,7 +78,7 @@
                 localStorage.pinned_post = post_id;
                 $(".to-pinned").html("To #"+post_id);
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".to-pinned", function(){
+            $(".feed-sidebar").on("click", ".to-pinned", function(){
                 var post_id=localStorage.pinned_post;
                 if($("#"+post_id).length){
                     $('html, body').animate({
@@ -86,7 +86,7 @@
                     }, 200);
                 }
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".hide-before-pinned", function(){
+            $(".feed-sidebar").on("click", ".hide-before-pinned", function(){
                 var post_id=localStorage.pinned_post;
                 $(".feed-stream > .ember-view > .occludable-area").each(function(){
                     if($(this).attr("id") < post_id){$(this).addClass("before-pinned-hide");}
@@ -97,7 +97,7 @@
                     }, 200);
                 }
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".to-pinned-previous", function(){
+            $(".feed-sidebar").on("click", ".to-pinned-previous", function(){
                 var post_id=localStorage.pinned_post;
                 var prev=$("#"+post_id).prev();
                 if(prev.length){
@@ -109,7 +109,7 @@
                 $(".to-pinned").html("To #"+post_id);
                 localStorage.pinned_post = post_id;
             });
-            $(".sidebar-item.sidebar-footer").on("click", ".to-pinned-next", function(){
+            $(".feed-sidebar").on("click", ".to-pinned-next", function(){
                 var post_id=localStorage.pinned_post;
                 var next=$("#"+post_id).next();
                 if(next.length){
@@ -129,6 +129,7 @@
             ".pin-button-wrap{position:absolute;top:0;right:0;z-index:100;}"+
             ".occludable-area.before-pinned-hide{display:none;}"+
             ".occludable-area.is-nsfw.filter-on .stream-content-post{-webkit-filter: blur(50px);filter: blur(50px);}"+
+            ".werejo-buttons-wrap.is-sticky{top:160px;}"+
             "</style>"
         );
     });
