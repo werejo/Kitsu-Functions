@@ -42,7 +42,8 @@
                 "<button class='to-pinned' data-pinned>To Pinned</button>"+"<br/>"+
                 "<button class='hide-before-pinned'>Hide Before Pinned</button>"+"<br/>"+
                 "<button class='to-pinned-previous'><< Prev</button>"+
-                "<button class='to-pinned-next'>Next >></button>"+
+                "<button class='to-pinned-next'>Next >></button>"+"<br/>"+
+                "<button class='like-pinned'>Like Pinned</button>"+
                 "</div>"
             );
             $(".feed-stream").on("click", ".nsfw-gate a", function(){
@@ -120,6 +121,12 @@
 				post_id = next.attr("id");
                 $(".to-pinned").html("To #"+post_id);
                 localStorage.pinned_post = post_id;
+            });
+            $(".feed-sidebar").on("click", ".like-pinned", function(){
+                var post_id=localStorage.pinned_post;
+                if($("#"+post_id).length){
+                    $(this).find(".like-stream-item:not(.is-liked)").click();
+                }
             });
             console.log("werejo's additional functions created!");
         }
