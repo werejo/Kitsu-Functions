@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         	werejo's additional Kitsu functions
 // @namespace    	http://plug.dj/hummingbird-me
-// @version      	1.1.4
+// @version      	1.1.5
 // @description  	Some additional functions I felt I needed for my (¬‿¬ ) Kitsu experience
 // @author       	werejo
 // @homepage      	https://github.com/werejo/Kitsu-Functions
