@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         	werejo's additional Kitsu functions
 // @namespace    	http://plug.dj/hummingbird-me
-// @version      	1.1.5
+// @version      	1.1.6
 // @description  	Some additional functions I felt I needed for my (¬‿¬ ) Kitsu experience
 // @author       	werejo
 // @homepage      	https://github.com/werejo/Kitsu-Functions
@@ -125,7 +125,7 @@
             $(".feed-sidebar").on("click", ".like-pinned", function(){
                 var post_id=localStorage.pinned_post;
                 if($("#"+post_id).length){
-                    $("#"+post_id+" .stream-item-activity .like-stream-item:not(.is-liked)").click();
+                    $("#"+post_id+" .stream-content+.stream-item-activity .like-stream-item:not(.is-liked)").click();
                 }
             });
             console.log("werejo's additional functions created!");
