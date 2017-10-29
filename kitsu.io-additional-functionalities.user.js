@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         	werejo's additional Kitsu functions
 // @namespace    	http://plug.dj/hummingbird-me
-// @version      	1.1.6
+// @version      	1.1.7
 // @description  	Some additional functions I felt I needed for my (¬‿¬ ) Kitsu experience
 // @author       	werejo
 // @homepage      	https://github.com/werejo/Kitsu-Functions
@@ -101,6 +101,13 @@
             $(".feed-sidebar").on("click", ".to-pinned-previous", function(){
                 var post_id=localStorage.pinned_post;
                 var prev=$("#"+post_id).prev();
+                while(true){
+                    if(prev.hasClass("occludable-area")){
+                        break;
+                    }else{
+                        prev=prev.prev();
+                    }
+                }
                 if(prev.length){
                     $('html, body').animate({
                         scrollTop: prev.offset().top - $("#kitsu-navbar").height() - 10
@@ -113,6 +120,13 @@
             $(".feed-sidebar").on("click", ".to-pinned-next", function(){
                 var post_id=localStorage.pinned_post;
                 var next=$("#"+post_id).next();
+                while(true){
+                    if(next.hasClass("occludable-area")){
+                        break;
+                    }else{
+                        next=next.next();
+                    }
+                }
                 if(next.length){
                     $('html, body').animate({
                         scrollTop: next.offset().top - $("#kitsu-navbar").height() - 10
