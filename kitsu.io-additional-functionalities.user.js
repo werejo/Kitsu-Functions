@@ -125,7 +125,7 @@
             $(".feed-sidebar").on("click", ".like-pinned", function(){
                 var post_id=localStorage.pinned_post;
                 if($("#"+post_id).length){
-                    $("#"+post_id+" .like-stream-item:not(.is-liked)").click();
+                    $("#"+post_id+" .stream-item-activity .like-stream-item:not(.is-liked)").click();
                 }
             });
             console.log("werejo's additional functions created!");
